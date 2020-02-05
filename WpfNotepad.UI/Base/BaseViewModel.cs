@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
-namespace WpfNotepad.UI.ViewModels
+namespace WpfNotepad.UI.Base
 {
     public class BaseViewModel : INotifyPropertyChanged
     {

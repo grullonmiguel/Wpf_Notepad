@@ -1,4 +1,6 @@
-﻿namespace WpfNotepad.UI.ViewModels
+﻿using WpfNotepad.UI.Base;
+
+namespace WpfNotepad.UI.ViewModels
 {
     public class ShellViewModel : BaseViewModel
     {
