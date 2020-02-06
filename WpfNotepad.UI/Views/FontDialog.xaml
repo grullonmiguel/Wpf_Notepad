@@ -1,0 +1,119 @@
+﻿<Window
+    x:Class="WpfNotepad.UI.Views.FontDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:media="clr-namespace:System.Windows.Media;assembly=PresentationCore"
+    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+    xmlns:win="clr-namespace:System.Windows;assembly=PresentationCore"
+    Title="Font"
+    Width="300"
+    Height="250"
+    mc:Ignorable="d" WindowStartupLocation="CenterScreen">
+
+    <!--  Collections that can be referenced from the XAML such as list boxes and combo boxes  -->
+    <Window.Resources>
+
+        <ObjectDataProvider
+            x:Key="FontFamilyOptions"
+            MethodName="get_SystemFontFamilies"
+            ObjectType="{x:Type media:Fonts}" />
+
+        <x:Array x:Key="FontSizeOptions" Type="{x:Type sys:Double}">
+            <sys:Double>10</sys:Double>
+            <sys:Double>11</sys:Double>
+            <sys:Double>12</sys:Double>
+            <sys:Double>14</sys:Double>
+            <sys:Double>16</sys:Double>
+            <sys:Double>18</sys:Double>
+            <sys:Double>20</sys:Double>
+            <sys:Double>22</sys:Double>
+            <sys:Double>26</sys:Double>
+            <sys:Double>28</sys:Double>
+            <sys:Double>36</sys:Double>
+            <sys:Double>72</sys:Double>
+        </x:Array>
+
+        <x:Array x:Key="FontWeightOptions" Type="{x:Type win:FontWeight}">
+            <win:FontWeight>Normal</win:FontWeight>
+            <win:FontWeight>Bold</win:FontWeight>
+            <win:FontWeight>ExtraBold</win:FontWeight>
+        </x:Array>
+
+        <x:Array x:Key="FontStyleOptions" Type="{x:Type win:FontStyle}">
+            <win:FontStyle>Normal</win:FontStyle>
+            <win:FontStyle>Italic</win:FontStyle>
+            <win:FontStyle>Oblique</win:FontStyle>
+        </x:Array>
+
+    </Window.Resources>
+
+    <Grid>
+
+        <!--  Definitions  -->
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <!--  Font Family  -->
+        <DockPanel
+            Grid.Row="0"
+            Grid.Column="0"
+            Margin="8">
+            <TextBlock DockPanel.Dock="Top" Text="Font:" />
+            <ListBox
+                ItemsSource="{Binding Source={StaticResource FontFamilyOptions}}"
+                SelectedIndex="0"
+                SelectedItem="{Binding Family}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock FontFamily="{Binding}" Text="{Binding}" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </DockPanel>
+
+        <!--  Font Size  -->
+        <DockPanel
+            Grid.Row="0"
+            Grid.Column="1"
+            Margin="8">
+            <TextBlock DockPanel.Dock="Top" Text="Size:" />
+            <ListBox
+                ItemsSource="{Binding Source={StaticResource FontSizeOptions}}"
+                SelectedIndex="0"
+                SelectedItem="{Binding Size}" />
+        </DockPanel>
+
+        <!--  Font Style  -->
+        <StackPanel
+            Grid.Row="1"
+            Grid.Column="0"
+            Margin="8">
+            <TextBlock Text="Style:" />
+            <ComboBox
+                ItemsSource="{Binding Source={StaticResource FontStyleOptions}}"
+                SelectedIndex="0"
+                SelectedItem="{Binding Style}" />
+        </StackPanel>
+
+        <!--  Font Weight  -->
+        <StackPanel
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="8">
+            <TextBlock Text="Weight:" />
+            <ComboBox
+                ItemsSource="{Binding Source={StaticResource FontWeightOptions}}"
+                SelectedIndex="0"
+                SelectedItem="{Binding Weight}" />
+        </StackPanel>
+
+    </Grid>
+</Window>

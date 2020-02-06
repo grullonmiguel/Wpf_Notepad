@@ -23,8 +23,8 @@
                     <MenuItem Command="{Binding FormatCommand}" Header="Format" />
                     <MenuItem Command="{Binding WrapCommand}" Header="Word wrap" />
                 </MenuItem>
-                <MenuItem DataContext="Help" Header="Help">
-                    <MenuItem Command="{Binding AboutCommand}" Header="About" />
+                <MenuItem DataContext="{Binding Help}" Header="Help">
+                    <MenuItem Command="{Binding HelpCommand}" Header="About" />
                 </MenuItem>
             </Menu.Items>
         </Menu>
