@@ -1,12 +1,30 @@
-﻿namespace WpfNotepad.UI.Models
+﻿using WpfNotepad.UI.Base;
+
+namespace WpfNotepad.UI.Models
 {
-    public class DocumentModel
+    public class DocumentModel : BaseViewModel
     {
-        public string FileName { get; set; }
+        private string fileName;
+        private string filePath;
+        private string text;
 
-        public string FilePath { get; set; }
+        public string FileName 
+        { 
+            get => fileName;
+            set => NotifyPropertyChanged(ref fileName, value);
+        }
 
-        public string Text { get; set; }
+        public string FilePath 
+        { 
+            get => filePath;
+            set => NotifyPropertyChanged(ref filePath, value);
+        }
+
+        public string Text 
+        { 
+            get => text;
+            set => NotifyPropertyChanged(ref text, value); 
+        }
 
         /// <summary>
         /// Returns true when FileName or FilePath do not have values

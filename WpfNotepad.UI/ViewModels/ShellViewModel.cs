@@ -5,49 +5,24 @@ namespace WpfNotepad.UI.ViewModels
 {
     public class ShellViewModel : BaseViewModel
     {
-		#region Fields
+		#region Properties
 
 		// Document that is save, loaded and hold editor text
 		private DocumentModel _document;
-		private EditorViewModel _editor;
-		private FileViewModel _file;
-		private HelpViewModel _help;
-		private string _title;
 
-		#endregion
-
-		#region Properties
-
-		/// <summary>
 		/// Manages user input for document and format styles
-		/// </summary>
-		public EditorViewModel Editor
-		{
-			get => _editor;
-			set => NotifyPropertyChanged(ref _editor, value);
-		}
+		public EditorViewModel Editor { get; set; }
 
-		/// <summary>
 		/// Manages saving and loading text files
-		/// </summary>
-		public FileViewModel File
-		{
-			get => _file;
-			set => NotifyPropertyChanged(ref _file, value);
-		}
+		public FileViewModel File { get; set; }
 
-		/// <summary>
-		/// Manages help dialog
-		/// </summary>
-		public HelpViewModel Help
-		{
-			get => _help;
-			set => NotifyPropertyChanged(ref _help, value);
-		}
+		/// Manage help dialog
+		public HelpViewModel Help { get; set; }
 
 		/// <summary>
 		/// Sets the title of the main view
 		/// </summary>
+		private string _title;
 		public string Title
 		{
 			get => _title;

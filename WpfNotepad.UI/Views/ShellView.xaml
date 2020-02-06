@@ -2,10 +2,54 @@
     x:Class="WpfNotepad.UI.Views.ShellView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:WpfNotepad.UI.Views"
     Title="{Binding Title}"
     Width="800"
     Height="600"
     WindowStartupLocation="CenterScreen">
-    <Grid />
+    <DockPanel Margin="1">
+
+        <!--  Menu  -->
+        <Menu DockPanel.Dock="Top">
+            <Menu.Items>
+                <MenuItem DataContext="{Binding File}" Header="File">
+                    <MenuItem Command="{Binding NewCommand}" Header="New" />
+                    <MenuItem Command="{Binding OpenCommand}" Header="Open" />
+                    <MenuItem Command="{Binding SaveCommand}" Header="Save" />
+                    <MenuItem Command="{Binding SaveAsCommand}" Header="Save as..." />
+                    <Separator />
+                    <MenuItem Command="{Binding ExitCommand}" Header="Exit" />
+                </MenuItem>
+                <MenuItem DataContext="{Binding Editor}" Header="Format">
+                    <MenuItem Command="{Binding FormatCommand}" Header="Format" />
+                    <MenuItem Command="{Binding WrapCommand}" Header="Word wrap" />
+                </MenuItem>
+                <MenuItem DataContext="Help" Header="Help">
+                    <MenuItem Command="{Binding AboutCommand}" Header="About" />
+                </MenuItem>
+            </Menu.Items>
+        </Menu>
+
+        <DockPanel>
+
+            <TextBlock
+                DataContext="{Binding File.Document}"
+                DockPanel.Dock="Bottom"
+                Text="{Binding FilePath}" />
+
+            <!--  Text Area  -->
+            <TextBox
+                AcceptsReturn="True"
+                AcceptsTab="True"
+                DataContext="{Binding Editor}"
+                DockPanel.Dock="Top"
+                FontFamily="{Binding Format.Family}"
+                FontSize="{Binding Format.Size}"
+                FontStyle="{Binding Format.Style}"
+                FontWeight="{Binding Format.Weight}"
+                Text="{Binding Document.Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                TextWrapping="{Binding Format.Wrap}"
+                VerticalScrollBarVisibility="Visible" />
+        </DockPanel>
+
+    </DockPanel>
 </Window>

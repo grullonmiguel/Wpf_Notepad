@@ -4,40 +4,15 @@ using WpfNotepad.UI.Models;
 
 namespace WpfNotepad.UI.ViewModels
 {
-    public class EditorViewModel : BaseViewModel
+    public class EditorViewModel
     {
+        public DocumentModel Document { get; set; }
 
-        #region Fields
-
-        private DocumentModel _document;
-        private FormatModel _format;
-
-        #endregion
-
-        #region Properties
-
-        public DocumentModel Document
-        {
-            get => _document;
-            set => NotifyPropertyChanged(ref _document, value);
-        }
-
-        public FormatModel Format
-        {
-            get => _format;
-            set => NotifyPropertyChanged(ref _format, value);
-        }
-
-        #endregion
-
-        #region Commands
+        public FormatModel Format { get; set; }
 
         public ICommand FormatCommand { get; }
+
         public ICommand WrapCommand { get; }
-
-        #endregion
-
-        #region Constructor
 
         public EditorViewModel(DocumentModel document)
         {
@@ -47,10 +22,6 @@ namespace WpfNotepad.UI.ViewModels
             FormatCommand = new RelayCommand(OpenStyleDialog);
             WrapCommand = new RelayCommand(ToggleWrap);
         }
-
-        #endregion
-
-        #region Methods
 
         /// <summary>
         /// Opens a dialog view to handle styles
@@ -70,7 +41,5 @@ namespace WpfNotepad.UI.ViewModels
             else
                 Format.Wrap = System.Windows.TextWrapping.Wrap;
         }
-
-        #endregion
     }
 }

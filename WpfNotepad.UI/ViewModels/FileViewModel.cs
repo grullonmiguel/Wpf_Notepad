@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using System;
 using System.Windows.Input;
 using WpfNotepad.UI.Base;
 using WpfNotepad.UI.Factories;
@@ -6,43 +7,33 @@ using WpfNotepad.UI.Models;
 
 namespace WpfNotepad.UI.ViewModels
 {
-    public class FileViewModel : BaseViewModel
+    public class FileViewModel
     {
-        #region Properties
-
-        private DocumentModel _document;
-        public DocumentModel Document
-        {
-            get => _document;
-            private set => NotifyPropertyChanged(ref _document, value);
-        }
-
-        #endregion
-
-        #region ICommands
+        public DocumentModel Document { get; set; }
+        public ICommand ExitCommand { get; }
 
         public ICommand NewCommand { get; }
+
         public ICommand SaveCommand { get; }
+
         public ICommand SaveAsCommand { get; }
+
         public ICommand OpenCommand { get; }
-
-        #endregion
-
-        #region Constructor
 
         public FileViewModel(DocumentModel document)
         {
             Document = document;
-
+            ExitCommand = new RelayCommand(CloseApp);
             NewCommand = new RelayCommand(NewFile);
             SaveCommand = new RelayCommand(SaveFile);
             SaveAsCommand = new RelayCommand(SaveFileAs);
             OpenCommand = new RelayCommand(OpenFile);
         }
 
-        #endregion
-
-        #region Methods
+        private void CloseApp()
+        {
+            Environment.Exit(0);
+        }
 
         public void NewFile()
         {
@@ -53,7 +44,10 @@ namespace WpfNotepad.UI.ViewModels
 
         public void SaveFile()
         {
-            FileDialogFactory.WriteAllText(Document.FilePath, Document.Text);
+            if ((Document.FileName == string.Empty) || (Document.FileName == null))
+                SaveFileAs();
+            else
+                FileDialogFactory.WriteAllText(Document.FilePath, Document.Text);
         }
 
         private void SaveFileAs()
@@ -82,7 +76,5 @@ namespace WpfNotepad.UI.ViewModels
             Document.FilePath = dialog.FileName;
             Document.FileName = dialog.SafeFileName;
         }
-
-        #endregion
     }
 }
