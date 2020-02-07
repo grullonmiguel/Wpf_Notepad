@@ -1,5 +1,5 @@
 ﻿using System.Windows.Input;
-using WpfNotepad.UI.Base;
+using WpfNotepad.UI.Utilities;
 using WpfNotepad.UI.Models;
 using WpfNotepad.UI.Views;
 

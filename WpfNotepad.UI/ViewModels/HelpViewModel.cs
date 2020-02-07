@@ -1,10 +1,10 @@
 ﻿using System.Windows.Input;
-using WpfNotepad.UI.Base;
+using WpfNotepad.UI.Utilities;
 using WpfNotepad.UI.Views;
 
 namespace WpfNotepad.UI.ViewModels
 {
-    public class HelpViewModel : BaseViewModel
+    public class HelpViewModel : ViewModelBase
     {
         public ICommand HelpCommand { get; }
 

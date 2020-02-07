@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace WpfNotepad.UI.Base
+namespace WpfNotepad.UI.Utilities
 {
     public class RelayCommand : ICommand
     {

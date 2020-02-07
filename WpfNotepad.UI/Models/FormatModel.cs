@@ -1,10 +1,10 @@
 ﻿using System.Windows;
 using System.Windows.Media;
-using WpfNotepad.UI.Base;
+using WpfNotepad.UI.Utilities;
 
 namespace WpfNotepad.UI.Models
 {
-    public class FormatModel : BaseViewModel
+    public class FormatModel : ViewModelBase
     {
         private TextWrapping wrap;
         private FontStyle style;

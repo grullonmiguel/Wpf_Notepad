@@ -1,9 +1,9 @@
-﻿using WpfNotepad.UI.Base;
+﻿using WpfNotepad.UI.Utilities;
 using WpfNotepad.UI.Models;
 
 namespace WpfNotepad.UI.ViewModels
 {
-    public class ShellViewModel : BaseViewModel
+    public class ShellViewModel : ViewModelBase
     {
 		#region Properties
 
@@ -39,12 +39,12 @@ namespace WpfNotepad.UI.ViewModels
 			_document = new DocumentModel();
 			Help = new HelpViewModel();
 
-			// NOTE: both Editor and File are assigned the same document instance
+			// NOTE: both Editor and File are 
+			// assigned the same document instance
 			Editor = new EditorViewModel(_document);
 			File = new FileViewModel(_document);
 		}
 
 		#endregion
-
 	}
 }

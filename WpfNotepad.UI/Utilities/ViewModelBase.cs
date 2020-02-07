@@ -4,9 +4,9 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
-namespace WpfNotepad.UI.Base
+namespace WpfNotepad.UI.Utilities
 {
-    public class BaseViewModel : INotifyPropertyChanged
+    public class ViewModelBase : INotifyPropertyChanged
     {
         // Summary:
         //     Occurs when a property value changes.

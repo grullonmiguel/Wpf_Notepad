@@ -1,7 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Windows.Input;
-using WpfNotepad.UI.Base;
+using WpfNotepad.UI.Utilities;
 using WpfNotepad.UI.Factories;
 using WpfNotepad.UI.Models;
 

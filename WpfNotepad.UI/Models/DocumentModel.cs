@@ -1,8 +1,8 @@
-﻿using WpfNotepad.UI.Base;
+﻿using WpfNotepad.UI.Utilities;
 
 namespace WpfNotepad.UI.Models
 {
-    public class DocumentModel : BaseViewModel
+    public class DocumentModel : ViewModelBase
     {
         private string fileName;
         private string filePath;
