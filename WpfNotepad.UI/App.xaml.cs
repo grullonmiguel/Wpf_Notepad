@@ -10,8 +10,9 @@ namespace WpfNotepad.UI
         {
             base.OnStartup(e);
 
-            var view = new ShellView { DataContext = new ShellViewModel() };
-
+            var view = new ShellView ();
+            var viewModel = new ShellViewModel(view);
+            view.DataContext = viewModel;
             view.ShowDialog();
         }
     }
