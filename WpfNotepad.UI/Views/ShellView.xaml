@@ -6,6 +6,8 @@
     Title="{Binding Title}"
     Width="800"
     Height="600"
+    MinWidth="640"
+    MinHeight="480"
     AllowsTransparency="True"
     Background="{DynamicResource MaterialDesignPaper}"
     FontFamily="{DynamicResource MaterialDesignFont}"
@@ -32,7 +34,7 @@
 
         <materialDesign:ColorZone
             Height="{Binding TitleHeight, FallbackValue=60}"
-            materialDesign:ShadowAssist.ShadowDepth="Depth3"
+            materialDesign:ShadowAssist.ShadowDepth="Depth1"
             Mode="PrimaryLight">
 
             <Grid>
@@ -51,11 +53,11 @@
                     Height="60"
                     Mode="PrimaryDark">
                     <materialDesign:PackIcon
-                        Width="45"
-                        Height="45"
+                        Width="30"
+                        Height="30"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Kind="Notebook" />
+                        Kind="Notebook" Foreground="{StaticResource PrimaryHueLightBrush}" />
                 </materialDesign:ColorZone>
 
                 <!--  Menu  --> 
@@ -124,7 +126,7 @@
         <!--  Text Area  -->
         <TextBox
             Grid.Row="1"
-            Padding="4"
+            Padding="2 0"
             AcceptsReturn="True"
             AcceptsTab="True"
             DataContext="{Binding Editor}"
@@ -136,13 +138,13 @@
             TextWrapping="{Binding Format.Wrap}"
             VerticalScrollBarVisibility="Visible" />
 
-        <materialDesign:ColorZone
-            Grid.Row="2"
-            Padding="8"
-            Mode="PrimaryLight">
+        <!--  File name -->
+        <materialDesign:ColorZone Grid.Row="2" Mode="PrimaryDark">
 
-            <TextBlock DataContext="{Binding File.Document}" Text="{Binding FilePath, FallbackValue='Hello World'}" 
-                       Style="{StaticResource MaterialDesignSubtitle2TextBlock}" />
+            <TextBlock DataContext="{Binding File.Document}" 
+                       Margin="8 4"
+                       Text="{Binding FileName}" 
+                       Style="{StaticResource MaterialDesignBody2TextBlock}" />
 
         </materialDesign:ColorZone>
 
